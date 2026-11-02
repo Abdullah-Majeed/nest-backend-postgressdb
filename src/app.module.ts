@@ -7,7 +7,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { EmployeesModule } from './employees/employees.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(),TypeOrmModule.forRoot({
+  imports: [ConfigModule.forRoot({
+    isGlobal: true,
+  }),TypeOrmModule.forRoot({
     type: 'postgres',
     url: process.env.DATABASE_URL,
     autoLoadEntities: true,
