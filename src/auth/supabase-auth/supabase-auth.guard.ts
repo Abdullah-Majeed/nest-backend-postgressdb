@@ -11,7 +11,7 @@ export class SupabaseAuthGuard implements CanActivate {
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
-    const request: Request = context.switchToHttp().getRequest<Request>();
+    const request = context.switchToHttp().getRequest<Request>();
     const authHeader = request.headers['authorization'];
     if(!authHeader || !authHeader.startsWith('Bearer ')) {
       throw new UnauthorizedException('Missing or invalid Authorization header');
